@@ -1,8 +1,9 @@
-from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem, QApplication, QLineEdit, QStackedLayout, QComboBox, QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QLabel
+from PyQt5.QtWidgets import QGridLayout, QTableWidget, QTableWidgetItem, QApplication, QLineEdit, QStackedLayout, QComboBox, QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QLabel
 from PyQt5.QtGui import QPalette
 from PyQt5.QtCore import Qt
 import podman
 import sys
+import urllib.parse
 
 lists = []
 pageLayouts = []
@@ -48,12 +49,29 @@ class Window(QWidget):
 
         self.page1 = QWidget()
         self.page1Layout = QVBoxLayout()
-        self.page1Layout.setSpacing(0)
-        self.page1Layout.addWidget(imgs)
-        self.page1Layout.addWidget(ctrs)
-        self.page1Layout.addWidget(pods)
-        self.page1Layout.addWidget(ctrCreate)
-        self.page1Layout.addWidget(podCreate)
+        self.page1LayoutSub = QGridLayout()
+        self.page1LayoutSub.setHorizontalSpacing(50)
+        self.page1LayoutSub.addWidget(imgs,0,0)
+        self.page1LayoutSub.addWidget(ctrs,1,0)
+        self.page1LayoutSub.addWidget(pods,2,0)
+        self.page1LayoutSub.addWidget(ctrCreate,3,0)
+        self.page1LayoutSub.addWidget(podCreate,4,0)
+        version_report = client.version()
+        url = urllib.parse.unquote(client.api.base_url.geturl())
+        self.page1LayoutSub.addWidget(QLabel("Podman GUI \nPodman API Version: "+version_report["Components"][0]["Details"]["APIVersion"]
+        + "\nUnix Socket Location: "+url), 0, 1)
+        Qh = QHBoxLayout()
+        Qh.setSpacing(5)
+        newBox = QLineEdit()
+        submit = QPushButton('Reset Socket Location', self)
+        Qh.addWidget(newBox)
+        Qh.addWidget(submit)
+        self.page1LayoutSub.addLayout(Qh, 1, 1)
+        self.page1LayoutSub.addWidget
+        self.page1LayoutSub.setRowStretch(0, 1)
+        self.page1LayoutSub.setRowStretch(1, 1)
+        self.page1LayoutSub.setRowStretch(2, 1)
+        self.page1Layout.addLayout(self.page1LayoutSub)
         self.page1Layout.addStretch(1)
         pageLayouts.append(self.page1Layout)
         pages.append(self.page1)
@@ -100,7 +118,7 @@ class Window(QWidget):
         podCreate.clicked.connect(lambda: self.create_on_click(5))
  
 
-        self.resize(600, 600)
+        #self.resize(600, 600)
 
         layout.addLayout(self.stackedLayout)
 
