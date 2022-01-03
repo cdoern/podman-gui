@@ -1,0 +1,59 @@
+QWidget {
+    background-color: rgb(146, 7, 181);
+}
+
+QPushButton {
+    background-color: rgb(119, 96, 188);
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: beige;
+    font: bold 14px;
+    min-width: 10em;
+    padding: 6px;
+}
+QPushButton:pressed {
+    background-color: rgb(126, 74, 186);
+    border-style: inset;
+}
+
+QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 0 8px;
+    background-color: rgb(105, 140, 191);
+    selection-background-color: darkgray;
+}
+
+QTableWidget{ border-style: outset; border: 5px; padding: 5px; background-color: rgb(105, 140, 191) }
+QHeaderView{background-color: rgb(119, 96, 188) }
+QTableCornerButton::section{background-color: rgb(119, 96, 188)}
+QScrollBar{background-color: rgb(119, 96, 188)}
+
+
+QComboBox {
+    border: 3px solid rgb(119, 96, 188);
+    background-color: rgb(105, 140, 191);
+    border-radius: 3px;
+    padding: 1px 18px 1px 3px;
+    min-width: 6em;
+}
+
+QComboBox::down-arrow {
+    background-color: rgb(119, 96, 188) ;
+    image: url(down.png)
+}
+
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px;
+
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid; /* just a single line */
+    border-top-right-radius: 3px; /* same radius as the QComboBox */
+    border-bottom-right-radius: 3px;
+}
+
