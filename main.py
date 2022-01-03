@@ -1,6 +1,6 @@
 from PyQt5 import QtGui
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import QGridLayout, QTabWidget, QTableWidget, QTableWidgetItem, QApplication, QLineEdit, QStackedLayout, QComboBox, QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QLabel, QSizePolicy
+from PyQt5.QtWidgets import QGridLayout, QTabWidget, QFrame, QTableWidget, QTableWidgetItem, QApplication, QLineEdit, QStackedLayout, QComboBox, QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QLabel, QSizePolicy
 from PyQt5.QtGui import QFont, QPalette, QPixmap
 from PyQt5.QtCore import QSize, Qt
 import podman
@@ -108,9 +108,20 @@ class Window(QWidget):
         socketReset.addWidget(newBox)
         socketReset.addWidget(submit)
         self.page1LayoutInfo.addLayout(socketReset)
-        self.page1LayoutSub.addLayout(self.page1LayoutInfo, 0, 1)
+        self.page1LayoutSub.addLayout(self.page1LayoutInfo, 0, 2)
         self.page1LayoutSub.setColumnStretch(1,1)
         self.page1LayoutSub.setVerticalSpacing(0)
+
+        sep = QFrame()
+        sep.setStyleSheet("""
+            QWidget {
+                color: rgb(105, 140, 191)
+            }
+        """)
+        sep.setFrameShape(QFrame.VLine)
+        sep.setLineWidth(3)
+
+        self.page1LayoutSub.addWidget(sep, 0, 1)
         self.page1Layout.addLayout(self.page1LayoutSub)
         self.page1Layout.addStretch(1)
         pageLayouts.append(self.page1Layout)

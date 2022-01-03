@@ -6,7 +6,7 @@ QPushButton {
     background-color: rgb(119, 96, 188);
     border-style: outset;
     border-width: 2px;
-    border-radius: 10px;
+
     border-color: beige;
     font: bold 14px;
     min-width: 10em;
@@ -17,9 +17,14 @@ QPushButton:pressed {
     border-style: inset;
 }
 
+QPushButton:hover {
+    background-color: rgb(126, 74, 186);
+    border-style: inset;
+}
+
 QLineEdit {
     border: 2px solid gray;
-    border-radius: 10px;
+
     padding: 0 8px;
     background-color: rgb(105, 140, 191);
     selection-background-color: darkgray;
@@ -57,3 +62,8 @@ QComboBox::drop-down {
     border-bottom-right-radius: 3px;
 }
 
+QFrame[frameShape="5"],
+QFrame[frameShape="4"] /* QFrame::VLine == 0x0005 */
+{
+    background: rgb(119, 96, 188)
+}
