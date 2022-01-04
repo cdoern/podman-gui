@@ -10,6 +10,7 @@ This mix of CSS styling with Python scripting makes PyQt a powerful GUI tool and
 This application depends on the podman socket being active so before running please verify both the podman service and socket are running. If you find they are not running you can start them:
 
 `systemctl --user start podman.service`
+
 `systemctl --user start podman.socket`
 
 ## Download
@@ -17,3 +18,18 @@ This application depends on the podman socket being active so before running ple
 you can download the rpm [here](podman-gui-1-1.x86_64.rpm) and run via the command line using `podman-gui`
 
 if you receive an error relating to wayland and Qt being incompatible please `export QT_QPA_PLATFORM=xcb`
+
+## Run from Source
+
+in order to run from source you may need to create an executable using pyinstaller, this is because the images
+used in the application depend on the temporary paths pyinstaller creates. To do this please run these commands in the project directory:
+
+`pip install pyinstaller`
+
+`pyinstaller --name=podman-gui --add-data active.png:. --add-data inactive.png:. --add-data podman.png:. --add-data down.png:. --add-data stylesheet.qss:. --onefile main.py`
+
+then you can run either
+
+`./dist/podman-gui`
+
+or just execute the python file itself since the tmp directories have been created.
