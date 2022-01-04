@@ -5,47 +5,51 @@ QWidget {
 QPushButton {
     background-color: rgb(119, 96, 188);
     border-style: outset;
-    border-width: 2px;
-
+    border-radius: 10px;
     border-color: beige;
     font: bold 14px;
     min-width: 10em;
     padding: 6px;
 }
 QPushButton:pressed {
+    border-radius: 10px;
     background-color: rgb(126, 74, 186);
     border-style: inset;
 }
 
 QPushButton:hover {
+    border-radius: 10px;
     background-color: rgb(126, 74, 186);
     border-style: inset;
 }
 
 QLineEdit {
-    border: 2px solid gray;
-
+    border: 2px white;
     padding: 0 8px;
-    background-color: rgb(105, 140, 191);
-    selection-background-color: darkgray;
+    background-color: white;
+    selection-background-color: white;
 }
 
-QTableWidget{ border-style: outset; border: 5px; padding: 5px; background-color: rgb(105, 140, 191) }
+QTableWidget{ border-style: outset; border: 5px; padding: 5px; background-color: white }
 QHeaderView{background-color: rgb(119, 96, 188) }
 QTableCornerButton::section{background-color: rgb(119, 96, 188)}
 QScrollBar{background-color: rgb(119, 96, 188)}
 
+QListView {
+    background-color: white;
+    selection-color: black
+}
 
 QComboBox {
-    border: 3px solid rgb(119, 96, 188);
-    background-color: rgb(105, 140, 191);
+    border: 3px solid white;
+    background-color: white;
     border-radius: 3px;
     padding: 1px 18px 1px 3px;
     min-width: 6em;
 }
 
 QComboBox::down-arrow {
-    background-color: rgb(119, 96, 188) ;
+    background-color: white;
     image: url(down.png)
 }
 
