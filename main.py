@@ -39,7 +39,6 @@ client = podman.PodmanClient()
 class Window(QWidget): 
     def __init__(self):
         super().__init__()
-        self.setFixedHeight(400)
         self.ping_client()
         self.setWindowTitle("Podman GUI")
         self.setLayout(layout)
